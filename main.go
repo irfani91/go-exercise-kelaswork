@@ -1,41 +1,45 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
-func main() {
-	var formatString string = "hello world"
-	namaVarible1 := "hello world"
-	fmt.Println(namaVarible1)
-	fmt.Println(formatString)
-	boolVar := true
-	fmt.Printf("Type: %T and value %v \n", boolVar, boolVar)
-	intVar := 5
-	intVar1 := int32(6)
-	intVar2 := int64(8)
-	floatVar1 := float32(6.0)
-	floatVar2 := float64(8.9)
-	runeVar := '😊'
-	bytesVar := []byte("Hello World")
-	complexVar := -7 + 3i
-	var myInterfaceVar interface{}
-	myInterfaceVar = 5
-	errVar := errors.New("errror Detected")
-	fmt.Printf("Type: %T and value %v \n", myInterfaceVar, myInterfaceVar)
-	fmt.Printf("Type: %T and value %v \n", errVar, errVar)
-	fmt.Printf("Type: %T and value %v \n", complexVar, complexVar)
-	fmt.Printf("Type: %T and value %v \n", runeVar, runeVar)
-	fmt.Printf("Type: %T and value %v \n", bytesVar, bytesVar)
-	fmt.Printf("Type: %T and value %v \n", intVar, intVar)
-	fmt.Printf("Type: %T and value %v \n", intVar1, intVar1)
-	fmt.Printf("Type: %T and value %v \n", intVar2, intVar2)
-	fmt.Printf("Type: %T and value %v \n", floatVar1, floatVar1)
-	fmt.Printf("Type: %T and value %v \n", floatVar2, floatVar2)
+func incrementPointer(var1 *int) {
+	*var1 = *var1 + 1
 }
 
-type MethodList interface {
-	MyFunction()
-	MyFunction2(int) int
+func increment(var1 int) {
+	var1 = var1 + 1
+}
+func main() {
+	var pointerSaya *string
+	var kalimat = "Hello Saya"
+	pointerSaya = &kalimat
+
+	var pointerSaya2 = new(string)
+
+	*pointerSaya = "Belajar Golang"
+	fmt.Println(pointerSaya)
+	fmt.Println(*pointerSaya)
+	fmt.Println(kalimat)
+	fmt.Println(pointerSaya2)
+
+	var1 := 1
+	fmt.Printf("my value is %d\n", var1)
+	increment(var1)
+	fmt.Printf("my value is %d\n", var1)
+	incrementPointer(&var1)
+	fmt.Printf("my value is %d\n and address %X \n", &var1, var1)
+	var pointerSaya3 *string
+	//fmt.Printf("Nilai nya %v", *pointerSaya3)
+	fmt.Printf("Nilai nya %v \n", pointerSaya3)
+	pointerSaya3 = new(string)
+	*pointerSaya3 = "sakit"
+	fmt.Printf("Nilai nya %v\n", *pointerSaya3)
+
+	fmt.Printf("Nilainya %v\n", kalimat)
+	pointerSaya3 = &kalimat
+	*pointerSaya3 = "ubah "
+	fmt.Printf("Nilainya %v\n", kalimat)
+	fmt.Printf("Nilai nya %v", *pointerSaya3)
 }
